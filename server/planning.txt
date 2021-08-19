@@ -1,0 +1,125 @@
+API STANDARD
+
+{ROOT.api}/{version}/{grouping}/{endpoint}
+http://mern-api.frastio.com/v1/auth/login
+
+STATUS RESPONSE STANDARD
+
+200 - OK                    -> Call API Success.
+201 - CREATED               -> Post Success.
+400 - BAD REQUEST           -> Error on client side(invalid inputs, etc).
+401 - UNAUTHORIZED          -> User not authorized.
+403 - FORBIDDEN             -> User not allowed to access.
+404 - NOT FOUND             -> Request endpoint not found.
+405 - INTERNAL SERVER ERROR -> Server side error.
+502 - BAD GATEWAY           -> Invalid response from another request.
+
+GROUP : Auth
+[1] - register
+{root.api}/{versions}/auth/login
+
+req:
+{
+    "name":"Frastio",
+    "email":"frastio.agustiyan@gmail.com",
+    "password":"asjdhasjdh"
+}
+
+res:
+{
+    desc:register success,
+    data:{
+        id:1
+        name:frastio,
+        "email":"frastio.agustiyan@gmail.com",
+        "password":"asjdhasjdh"
+    }
+}
+
+err-response : 
+400 -> Invalid Input
+
+
+[2] - login
+{root.api}/{versions}/auth/login
+
+
+GROUP : Post
+
+SINGLE POST : {root.api}/{versions}/post/{:id}/{endpoints}
+GET ALL POSTS : {root.api}/{versions}/posts 
+
+[1] - Create Post
+req:
+{
+    title: Lorem Ipsum,
+    image-thumb:"d:/Programming/Web Developemnt/mern-playground/,
+    content :What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?"
+    tags: [
+        tags1,
+        tags2,
+        tags3
+    ]
+}
+
+res:
+{
+    desc: created successfully,
+    data:{
+        _id:(GENERATED FROM MONGODB or INCREMENT++)
+        _author: {
+            (GET FROM USER'S NAME)
+            _id:1,
+            name : frastio
+        }
+        title: Lorem Ipsum,
+        image-thumb:"d:/Programming/Web Developemnt/mern-playground/,
+        content :What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?"
+        tags: [
+            tags1,
+            tags2,
+            tags3
+        ],
+        _created_at : (GENERATED FROM MONGODB),
+    }
+}
+
+[2] - Get Post
+res: {
+    [
+        {
+            _id:(GENERATED FROM MONGODB or INCREMENT++)
+            _author: {
+                 (GET FROM USER'S NAME)
+                _id:1,
+                name : frastio
+             }
+            image-thumb:"d:/Programming/Web Developemnt/mern-playground/,
+            title: Lorem Ipsum,
+            content :What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?"
+            tags: [
+                tags1,
+                tags2,
+                tags3
+            ],
+            _created_at : (GENERATED FROM MONGODB),
+        },
+        {
+            _id:(GENERATED FROM MONGODB or INCREMENT++)
+            _author: (GET FROM USER'S NAME)
+            image-thumb:"d:/Programming/Web Developemnt/mern-playground/,
+            title: Lorem Ipsum,
+            content :What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?"
+            tags: [
+                tags1,
+                tags2,
+                tags3
+            ],
+            _created_at : (GENERATED FROM MONGODB),
+        },
+    ]
+}
+
+
+[3] - Update Post
+[4] - Delete Post
