@@ -59,5 +59,5 @@ app.use((error,req,res,next) => {
 
 //connect to mongodb
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(app.listen(4000, ()=>{ console.log('Server is up!')}))
+.then(app.listen(process.env.PORT, ()=>{ console.log(`Server is listening on port ${process.env.PORT}`)}))
 .catch(err => console.log(err))
