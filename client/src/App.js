@@ -8,6 +8,7 @@ import Post from './components/Post'
 
 import Login from './pages/Login'
 import PostDetail from './pages/PostDetail'
+import CreatePost from './pages/CreatePost'
 
 
 function App() {
@@ -29,15 +30,14 @@ function App() {
       <NavMenu/>
       <Container>
         <Switch>
-            <Route path="/login" component={Login}>
+            <Route path="/login" component={ Login }/>
             
-            </Route>
-            <Route path="/register">
-              <PostDetail/>
-            </Route>
-            <Route path="/post/:postId">
-              <PostDetail/>
-            </Route>
+            <Route path="/register" component= { PostDetail }/>
+
+            <Route path="/create" component= { CreatePost }/>
+
+            <Route path="/post/:postId" component= { PostDetail }/>
+          
             <Route exact path="/">
               {
                 data.map(item => (
@@ -47,7 +47,6 @@ function App() {
             </Route>
           </Switch>
       </Container>
-
     </div>
   );
 }

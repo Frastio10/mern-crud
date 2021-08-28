@@ -23,7 +23,7 @@ function PostDetail(){
     return (
         <Container className="my-5">
             <h1>{ data.title }</h1>
-            <img className="w-100" src={ "http://localhost:4000/"+ data.image.replace('storage/','')}/>
+            <img className="w-100" src={ "http://localhost:4000/"+ data.image }/>
             <p>{ data.content }</p>
         </Container>
     )

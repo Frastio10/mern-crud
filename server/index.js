@@ -17,7 +17,7 @@ const __dirname = path.resolve(); //__dirname isnt defined in ES6 so i used this
 
 const imagesDir = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './storage/images') //set the destination where to save the images
+        cb(null, './images') //set the destination where to save the images
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() +'-'+ file.originalname); //set the image files name
@@ -34,7 +34,7 @@ const fileFilter = (req, file, cb) => { //accepts these types only
     }
 }
 
-app.use('/images', express.static(path.join(__dirname, './storage/images'))) //get images
+app.use('/images', express.static(path.join(__dirname, './images'))) //get images
 app.use(multer({storage: imagesDir, fileFilter: fileFilter}).single('image')) //multer setup
 
 app.use((req, res, next) => { //set headers
